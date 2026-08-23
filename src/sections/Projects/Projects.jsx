@@ -15,14 +15,11 @@ function Projects() {
         <FadeIn>
 
           <SectionTitle
-            title="Projects"
-            subtitle="
-              Some of the fullstack applications and
-              systems I have developed using modern technologies.
-            "
+            title="Selected Work"
+            subtitle="A few things I've built while exploring full-stack development, product engineering and real-world application design."
           />
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 gap-8">
 
             {projects.map((project) => (
               <ProjectCard

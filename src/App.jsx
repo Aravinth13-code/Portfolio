@@ -1,64 +1,93 @@
 import { useEffect, useState } from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import BlogPost from "./pages/BlogPost"
+
 import Github from "./sections/Github/Github"
 import Loader from "./components/loader/Loader"
 import ParticlesBackground from "./components/ui/ParticlesBackground"
 import ScrollProgress from "./components/ui/ScrollProgress"
 import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
-
 import BackgroundGradient from "./components/ui/BackgroundGradient"
 
 import Hero from "./sections/Hero/Hero"
+import Services from "./sections/Services/Services"
 import About from "./sections/About/About"
 import Skills from "./sections/Skills/Skills"
 import Projects from "./sections/Projects/Projects"
 import Freelance from "./sections/Freelance/Freelance"
+import Blog from "./sections/Blog/Blog"
 import Contact from "./sections/Contact/Contact"
 
-function App() {const [loading, setLoading] = useState(true)
+function App() {
+  const [loading, setLoading] = useState(true)
 
-useEffect(() => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
 
-  const timer = setTimeout(() => {
-    setLoading(false)
-  }, 2000)
+    return () => clearTimeout(timer)
+  }, [])
 
-  return () => clearTimeout(timer)
+  if (loading) {
+    return <Loader />
+  }
 
-}, [])
-
-if (loading) {
-  return <Loader />
-}
-  
   return (
-    <div className="overflow-x-hidden">
+    <BrowserRouter>
 
-      <ScrollProgress />
+      <Routes>
 
-      <Navbar />
+        {/* HOME */}
 
-      <Hero />
+        <Route
+          path="/"
+          element={
+            <div className="overflow-x-hidden">
 
-      <About />
+              <ScrollProgress />
 
-      <Skills />
+              <Navbar />
 
-      <Projects />
+              <Hero />
 
-      <Github />
+<Services />
 
-      <Freelance />
+<Projects />
 
-      <Contact />
+<Freelance />
 
-      <Footer />
+<About />
 
-      <BackgroundGradient />
+<Skills />
 
-      <ParticlesBackground />
+<Github />
 
-    </div>
+<Blog />
+
+<Contact />
+              <Footer />
+
+              <BackgroundGradient />
+
+              <ParticlesBackground />
+
+            </div>
+          }
+        />
+
+        {/* BLOG ARTICLE */}
+
+        <Route
+          path="/blog/:slug"
+          element={<BlogPost />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   )
 }
 

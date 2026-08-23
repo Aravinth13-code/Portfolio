@@ -1,47 +1,45 @@
-import { useRef } from "react"
-
+import { useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
-
-import FadeIn from "../../animations/FadeIn"
-import SectionTitle from "../../components/ui/SectionTitle"
-
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
+  FaCheckCircle,
 } from "react-icons/fa"
 
-function Contact() {
+import FadeIn from "../../animations/FadeIn"
+import SectionTitle from "../../components/ui/SectionTitle"
 
+function Contact() {
   const formRef = useRef()
 
-  const sendEmail = (e) => {
+  const [sending, setSending] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
 
+  const sendEmail = async (e) => {
     e.preventDefault()
 
-    emailjs
-      .sendForm(
+    setSending(true)
+    setSent(false)
+    setError(false)
+
+    try {
+      await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
 
-      .then(() => {
-
-        alert("Message sent successfully!")
-
-        formRef.current.reset()
-
-      })
-
-      .catch((error) => {
-
-        console.log(error)
-
-        alert("Something went wrong!")
-
-      })
+      setSent(true)
+      formRef.current.reset()
+    } catch (error) {
+      console.error(error)
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -49,43 +47,54 @@ function Contact() {
       id="contact"
       className="section-padding"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
 
         <FadeIn>
 
           <SectionTitle
-            title="Contact"
-            subtitle="
-              Open for fulltime opportunities,
-              collaborations and freelance projects.
-            "
+            title="Let's Build Something"
+            subtitle="Have an idea, a project or a problem you'd like to solve? Tell me a little about it and I'll get back to you."
           />
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10">
 
-            {/* LEFT SIDE */}
+            {/* LEFT */}
 
             <div className="space-y-6">
 
+              <div>
+
+                <h3 className="text-2xl font-bold">
+                  Start a conversation
+                </h3>
+
+                <p className="mt-4 text-gray-400 leading-7">
+                  I'm open to freelance projects, full-time
+                  opportunities and interesting collaborations.
+                </p>
+
+              </div>
+
               {/* EMAIL */}
 
-              <div
+              <a
+                href="mailto:yourmail@gmail.com"
                 className="
-                  bg-zinc-900
+                  block
+                  bg-white/[0.03]
                   p-6
                   rounded-2xl
                   border
-                  border-zinc-800
-                  hover:border-cyan-400
-                  hover:shadow-[0_0_25px_rgba(0,245,255,0.3)]
+                  border-white/10
+                  hover:border-cyan-400/50
+                  hover:bg-white/[0.05]
                   transition
-                  duration-300
                 "
               >
 
                 <div className="flex items-center gap-4">
 
-                  <FaEnvelope className="text-2xl text-cyan-400" />
+                  <FaEnvelope className="text-xl text-cyan-400" />
 
                   <div>
 
@@ -93,7 +102,7 @@ function Contact() {
                       Email
                     </h4>
 
-                    <p className="text-gray-400">
+                    <p className="text-sm text-gray-400 mt-1">
                       yourmail@gmail.com
                     </p>
 
@@ -101,169 +110,372 @@ function Contact() {
 
                 </div>
 
+              </a>
+
+              {/* SOCIALS */}
+
+              <div className="flex gap-4">
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  className="
+                    w-12
+                    h-12
+                    rounded-xl
+                    border
+                    border-white/10
+                    bg-white/[0.03]
+                    flex
+                    items-center
+                    justify-center
+                    text-gray-400
+                    hover:text-white
+                    hover:border-purple-500/50
+                    transition
+                  "
+                >
+                  <FaGithub />
+                </a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="
+                    w-12
+                    h-12
+                    rounded-xl
+                    border
+                    border-white/10
+                    bg-white/[0.03]
+                    flex
+                    items-center
+                    justify-center
+                    text-gray-400
+                    hover:text-white
+                    hover:border-blue-500/50
+                    transition
+                  "
+                >
+                  <FaLinkedin />
+                </a>
+
               </div>
 
-              {/* GITHUB */}
+              {/* AVAILABILITY */}
 
               <div
                 className="
-                  bg-zinc-900
-                  p-6
                   rounded-2xl
                   border
-                  border-zinc-800
-                  hover:border-purple-500
-                  hover:shadow-[0_0_25px_rgba(145,94,255,0.3)]
-                  transition
-                  duration-300
+                  border-green-500/20
+                  bg-green-500/5
+                  p-5
                 "
               >
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
 
-                  <FaGithub className="text-2xl text-purple-400" />
+                  <span
+                    className="
+                      w-2.5
+                      h-2.5
+                      rounded-full
+                      bg-green-400
+                      animate-pulse
+                    "
+                  />
 
-                  <div>
-
-                    <h4 className="font-semibold">
-                      GitHub
-                    </h4>
-
-                    <p className="text-gray-400">
-                      github.com/yourprofile
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-              {/* LINKEDIN */}
-
-              <div
-                className="
-                  bg-zinc-900
-                  p-6
-                  rounded-2xl
-                  border
-                  border-zinc-800
-                  hover:border-blue-500
-                  hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]
-                  transition
-                  duration-300
-                "
-              >
-
-                <div className="flex items-center gap-4">
-
-                  <FaLinkedin className="text-2xl text-blue-400" />
-
-                  <div>
-
-                    <h4 className="font-semibold">
-                      LinkedIn
-                    </h4>
-
-                    <p className="text-gray-400">
-                      linkedin.com/in/yourprofile
-                    </p>
-
-                  </div>
+                  <span className="text-sm text-green-300">
+                    Currently open to opportunities
+                  </span>
 
                 </div>
+
+                <p className="mt-3 text-sm text-gray-400 leading-6">
+                  Available for freelance development,
+                  collaborations and full-time roles.
+                </p>
 
               </div>
 
             </div>
 
-            {/* RIGHT SIDE */}
+            {/* FORM */}
 
             <form
               ref={formRef}
               onSubmit={sendEmail}
               className="
-                bg-zinc-900
-                p-8
-                rounded-2xl
+                rounded-3xl
                 border
-                border-zinc-800
-                hover:border-purple-500
-                hover:shadow-[0_0_30px_rgba(145,94,255,0.3)]
-                transition
-                duration-300
+                border-white/10
+                bg-white/[0.03]
+                p-6
+                md:p-8
               "
             >
 
-              <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-5">
 
-                <input
-                  type="text"
-                  name="user_name"
-                  placeholder="Your Name"
-                  required
-                  className="
-                    w-full
-                    bg-zinc-800
-                    p-4
-                    rounded-xl
-                    outline-none
-                    border
-                    border-transparent
-                    focus:border-cyan-400
-                  "
-                />
+                {/* NAME */}
 
-                <input
-                  type="email"
-                  name="user_email"
-                  placeholder="Your Email"
-                  required
-                  className="
-                    w-full
-                    bg-zinc-800
-                    p-4
-                    rounded-xl
-                    outline-none
-                    border
-                    border-transparent
-                    focus:border-cyan-400
-                  "
-                />
+                <div>
 
-                <textarea
-                  rows="5"
-                  name="message"
-                  placeholder="Your Message"
-                  required
-                  className="
-                    w-full
-                    bg-zinc-800
-                    p-4
-                    rounded-xl
-                    outline-none
-                    border
-                    border-transparent
-                    focus:border-cyan-400
-                  "
-                />
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Name
+                  </label>
 
-                <button
-                  type="submit"
-                  className="
-                    bg-purple-600
-                    hover:bg-purple-700
-                    transition
-                    px-8
-                    py-4
-                    rounded-xl
-                    w-full
-                  "
-                >
-                  Send Message
-                </button>
+                  <input
+                    type="text"
+                    name="user_name"
+                    placeholder="Your name"
+                    required
+                    className="
+                      w-full
+                      bg-black/20
+                      p-4
+                      rounded-xl
+                      outline-none
+                      border
+                      border-white/10
+                      focus:border-cyan-400
+                      transition
+                    "
+                  />
+
+                </div>
+
+                {/* EMAIL */}
+
+                <div>
+
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Email
+                  </label>
+
+                  <input
+                    type="email"
+                    name="user_email"
+                    placeholder="you@example.com"
+                    required
+                    className="
+                      w-full
+                      bg-black/20
+                      p-4
+                      rounded-xl
+                      outline-none
+                      border
+                      border-white/10
+                      focus:border-cyan-400
+                      transition
+                    "
+                  />
+
+                </div>
+
+                {/* PROJECT TYPE */}
+
+                <div>
+
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Project Type
+                  </label>
+
+                  <select
+                    name="project_type"
+                    defaultValue=""
+                    required
+                    className="
+                      w-full
+                      bg-zinc-900
+                      p-4
+                      rounded-xl
+                      outline-none
+                      border
+                      border-white/10
+                      focus:border-cyan-400
+                      transition
+                    "
+                  >
+                    <option value="" disabled>
+                      Select a project type
+                    </option>
+
+                    <option value="Web Application">
+                      Web Application
+                    </option>
+
+                    <option value="Full-Stack Application">
+                      Full-Stack Application
+                    </option>
+
+                    <option value="Backend Development">
+                      Backend Development
+                    </option>
+
+                    <option value="Website">
+                      Website
+                    </option>
+
+                    <option value="Other">
+                      Other
+                    </option>
+                  </select>
+
+                </div>
+
+                {/* BUDGET */}
+
+                <div>
+
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Budget Range
+                  </label>
+
+                  <select
+                    name="budget"
+                    defaultValue=""
+                    className="
+                      w-full
+                      bg-zinc-900
+                      p-4
+                      rounded-xl
+                      outline-none
+                      border
+                      border-white/10
+                      focus:border-cyan-400
+                      transition
+                    "
+                  >
+                    <option value="" disabled>
+                      Select a range
+                    </option>
+
+                    <option value="Under $500">
+                      Under $500
+                    </option>
+
+                    <option value="$500 - $1,000">
+                      $500 - $1,000
+                    </option>
+
+                    <option value="$1,000 - $2,500">
+                      $1,000 - $2,500
+                    </option>
+
+                    <option value="$2,500+">
+                      $2,500+
+                    </option>
+
+                    <option value="Not sure yet">
+                      Not sure yet
+                    </option>
+                  </select>
+
+                </div>
 
               </div>
+
+              {/* MESSAGE */}
+
+              <div className="mt-5">
+
+                <label className="block text-sm text-gray-400 mb-2">
+                  Tell me about your project
+                </label>
+
+                <textarea
+                  rows="7"
+                  name="message"
+                  placeholder="What are you trying to build? What problem are you trying to solve?"
+                  required
+                  className="
+                    w-full
+                    bg-black/20
+                    p-4
+                    rounded-xl
+                    outline-none
+                    border
+                    border-white/10
+                    focus:border-cyan-400
+                    transition
+                    resize-none
+                  "
+                />
+
+              </div>
+
+              {/* STATUS */}
+
+              {sent && (
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    mt-5
+                    p-4
+                    rounded-xl
+                    border
+                    border-green-500/20
+                    bg-green-500/5
+                    text-green-300
+                    text-sm
+                  "
+                >
+                  <FaCheckCircle />
+                  Thanks! Your message has been sent successfully.
+                </div>
+              )}
+
+              {error && (
+                <div
+                  className="
+                    mt-5
+                    p-4
+                    rounded-xl
+                    border
+                    border-red-500/20
+                    bg-red-500/5
+                    text-red-300
+                    text-sm
+                  "
+                >
+                  Something went wrong. Please try again or contact me directly by email.
+                </div>
+              )}
+
+              {/* SUBMIT */}
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="
+                  mt-6
+                  w-full
+                  rounded-xl
+                  bg-gradient-to-r
+                  from-purple-600
+                  to-cyan-500
+                  px-8
+                  py-4
+                  font-semibold
+                  text-white
+                  transition
+                  hover:scale-[1.01]
+                  disabled:opacity-50
+                  disabled:cursor-not-allowed
+                "
+              >
+                {sending
+                  ? "Sending..."
+                  : "Send Project Inquiry"}
+              </button>
 
             </form>
 
