@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import BlogPost from "./pages/BlogPost"
 
 import Github from "./sections/Github/Github"
 import Loader from "./components/loader/Loader"
@@ -76,12 +75,6 @@ function App() {
           }
         />
 
-        {/* BLOG ARTICLE */}
-
-        <Route
-          path="/blog/:slug"
-          element={<BlogPost />}
-        />
 
       </Routes>
     </BrowserRouter>
