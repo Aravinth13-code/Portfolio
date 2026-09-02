@@ -36,7 +36,7 @@ function Github() {
             <div className="min-w-[700px]">
 
               <GitHubCalendar
-                username="yourusername"
+                username="Aravinth13-code"
                 colorScheme="dark"
                 blockSize={13}
                 blockMargin={4}
@@ -83,9 +83,9 @@ function Github() {
             </div>
 
             <a
-              href="#"
+              href="https://github.com/Aravinth13-code"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="
                 inline-flex
                 items-center
