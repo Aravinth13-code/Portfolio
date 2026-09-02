@@ -78,7 +78,7 @@ function Contact() {
               {/* EMAIL */}
 
               <a
-                href="mailto:yourmail@gmail.com"
+                href="mailto:aravinthgv13@gmail.com"
                 className="
                   block
                   bg-white/[0.03]
@@ -103,7 +103,7 @@ function Contact() {
                     </h4>
 
                     <p className="text-sm text-gray-400 mt-1">
-                      yourmail@gmail.com
+                      aravinthgv13@gmail.com
                     </p>
 
                   </div>

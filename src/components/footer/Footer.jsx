@@ -159,7 +159,7 @@ function Footer() {
             </p>
 
             <a
-              href="mailto:yourmail@gmail.com"
+              href="mailto:aravinthgv13@gmail.com"
               className="
                 inline-flex
                 items-center
@@ -172,7 +172,7 @@ function Footer() {
               "
             >
               <FaEnvelope />
-              yourmail@gmail.com
+              aravinthgv13@gmail.com
             </a>
 
             {/* SOCIALS */}

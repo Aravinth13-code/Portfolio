@@ -271,7 +271,7 @@ bg-[#7FA6C9]/[0.05]
         >
 
           <a
-            href="#"
+            href="https://github.com/Aravinth13-code"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -285,7 +285,7 @@ bg-[#7FA6C9]/[0.05]
           </a>
 
           <a
-            href="#"
+            href="https://www.linkedin.com/in/aravinthgv/"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
