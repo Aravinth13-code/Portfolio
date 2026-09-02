@@ -25,36 +25,36 @@ function Hero() {
       "
     >
 
-      {/* BACKGROUND GLOW */}
+      {/* SUBTLE BACKGROUND GLOW */}
 
-      <div
-        className="
-          absolute
-          top-1/4
-          left-1/2
-          -translate-x-1/2
-          w-[500px]
-          h-[500px]
-          rounded-full
-          bg-purple-600/10
-          blur-[120px]
-          pointer-events-none
-        "
-      />
+<div
+  className="
+    absolute
+    top-[20%]
+    left-1/2
+    -translate-x-1/2
+    w-[600px]
+    h-[600px]
+    rounded-full
+    bg-[var(--primary)]/[0.06]
+    blur-[140px]
+    pointer-events-none
+  "
+/>
 
-      <div
-        className="
-          absolute
-          bottom-0
-          left-1/4
-          w-[300px]
-          h-[300px]
-          rounded-full
-          bg-cyan-500/5
-          blur-[100px]
-          pointer-events-none
-        "
-      />
+<div
+  className="
+    absolute
+    bottom-[-150px]
+    right-[-100px]
+    w-[400px]
+    h-[400px]
+    rounded-full
+    bg-[var(--secondary)]/[0.035]
+    blur-[130px]
+    pointer-events-none
+  "
+/>
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
 
@@ -74,8 +74,8 @@ function Hero() {
               gap-2
               rounded-full
               border
-              border-green-400/20
-              bg-green-400/5
+             border-[#7FA6C9]/20
+bg-[#7FA6C9]/[0.05]
               px-4
               py-2
               text-sm
@@ -88,7 +88,7 @@ function Hero() {
                 w-2
                 h-2
                 rounded-full
-                bg-green-400
+                bg-[#7FA6C9]
                 animate-pulse
               "
             />
@@ -140,13 +140,13 @@ function Hero() {
             text-center
             text-lg
             sm:text-xl
-            text-gray-300
+            text-[var(--muted)]
           "
         >
 
           Full-Stack Developer specializing in{" "}
 
-          <span className="text-white font-medium">
+          <span className="text-[#E8E6E1] font-medium">
 
             <TypeAnimation
               sequence={[
@@ -182,15 +182,15 @@ function Hero() {
             duration: 0.7,
           }}
           className="
-            max-w-2xl
-            mx-auto
-            mt-6
-            text-center
-            text-gray-400
-            text-base
-            sm:text-lg
-            leading-relaxed
-          "
+  max-w-2xl
+  mx-auto
+  mt-6
+  text-center
+  text-[var(--muted)]
+  text-base
+  sm:text-lg
+  leading-relaxed
+"
         >
           I help startups, businesses and teams turn ideas
           into reliable, responsive and maintainable web

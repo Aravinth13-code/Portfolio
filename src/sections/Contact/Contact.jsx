@@ -86,7 +86,7 @@ function Contact() {
                   rounded-2xl
                   border
                   border-white/10
-                  hover:border-cyan-400/50
+                 hover:border-[#1687E8]/50
                   hover:bg-white/[0.05]
                   transition
                 "
@@ -94,7 +94,7 @@ function Contact() {
 
                 <div className="flex items-center gap-4">
 
-                  <FaEnvelope className="text-xl text-cyan-400" />
+                  <FaEnvelope className="text-xl text-[#1687E8]" />
 
                   <div>
 
@@ -133,7 +133,7 @@ function Contact() {
                     justify-center
                     text-gray-400
                     hover:text-white
-                    hover:border-purple-500/50
+hover:border-[#004FAA]/60
                     transition
                   "
                 >
@@ -157,7 +157,7 @@ function Contact() {
                     justify-center
                     text-gray-400
                     hover:text-white
-                    hover:border-blue-500/50
+                    hover:border-[#1687E8]/60
                     transition
                   "
                 >
@@ -243,7 +243,7 @@ function Contact() {
                       outline-none
                       border
                       border-white/10
-                      focus:border-cyan-400
+                      focus:border-[#1687E8]
                       transition
                     "
                   />
@@ -271,7 +271,7 @@ function Contact() {
                       outline-none
                       border
                       border-white/10
-                      focus:border-cyan-400
+                      focus:border-[#1687E8]
                       transition
                     "
                   />
@@ -298,7 +298,7 @@ function Contact() {
                       outline-none
                       border
                       border-white/10
-                      focus:border-cyan-400
+                      focus:border-[#1687E8]
                       transition
                     "
                   >
@@ -348,7 +348,7 @@ function Contact() {
                       outline-none
                       border
                       border-white/10
-                      focus:border-cyan-400
+                      focus:border-[#1687E8]
                       transition
                     "
                   >
@@ -402,7 +402,7 @@ function Contact() {
                     outline-none
                     border
                     border-white/10
-                    focus:border-cyan-400
+                    focus:border-[#1687E8]
                     transition
                     resize-none
                   "
@@ -453,29 +453,28 @@ function Contact() {
               {/* SUBMIT */}
 
               <button
-                type="submit"
-                disabled={sending}
-                className="
-                  mt-6
-                  w-full
-                  rounded-xl
-                  bg-gradient-to-r
-                  from-purple-600
-                  to-cyan-500
-                  px-8
-                  py-4
-                  font-semibold
-                  text-white
-                  transition
-                  hover:scale-[1.01]
-                  disabled:opacity-50
-                  disabled:cursor-not-allowed
-                "
-              >
-                {sending
-                  ? "Sending..."
-                  : "Send Project Inquiry"}
-              </button>
+  type="submit"
+  disabled={sending}
+  className="
+    mt-6
+    w-full
+    rounded-xl
+    bg-[#004FAA]
+    px-8
+    py-4
+    font-semibold
+    text-white
+    transition-all
+    hover:bg-[#1687E8]
+    hover:shadow-[0_0_25px_rgba(22,135,232,0.18)]
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+  "
+>
+  {sending
+    ? "Sending..."
+    : "Send Project Inquiry"}
+</button>
 
             </form>
 

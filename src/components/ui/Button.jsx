@@ -4,20 +4,37 @@ function Button({
   className = "",
   ...props
 }) {
-
   const baseStyles = `
     px-8
     py-4
     rounded-xl
-    transition
+    font-medium
+    transition-all
     duration-300
+    border
+    inline-flex
+    items-center
+    justify-center
+    gap-2
   `
 
-  const primaryStyles =
-    "bg-purple-600 hover:bg-purple-700"
+  const primaryStyles = `
+    bg-[var(--primary)]
+    border-[var(--primary)]
+    text-white
+    hover:bg-[#5A8BBE]
+    hover:border-[#5A8BBE]
+    hover:-translate-y-0.5
+  `
 
-  const secondaryStyles =
-    "border border-cyan-400 hover:bg-cyan-400/10"
+  const secondaryStyles = `
+    bg-transparent
+    border-[var(--border)]
+    text-[var(--text)]
+    hover:border-[var(--secondary)]
+    hover:bg-[var(--secondary)]/[0.06]
+    hover:-translate-y-0.5
+  `
 
   return (
     <button

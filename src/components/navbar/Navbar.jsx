@@ -41,17 +41,9 @@ function Navbar() {
   }
 
   return (
-    <nav
-      className="
-        fixed
-        top-0
-        left-0
-        w-full
-        z-50
-      "
-    >
+    <nav className="fixed top-0 left-0 w-full z-50">
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-5">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 pt-5">
 
         {/* NAVBAR */}
 
@@ -62,11 +54,12 @@ function Navbar() {
             justify-between
             px-5
             py-3
-            rounded-2xl
+            rounded-xl
             border
-            border-white/10
-            bg-[#050816]/70
-            backdrop-blur-xl
+            border-white/[0.08]
+            bg-[#0E1014]/90
+            backdrop-blur-md
+            shadow-[0_8px_30px_rgba(0,0,0,0.18)]
           "
         >
 
@@ -79,22 +72,28 @@ function Navbar() {
             className="
               cursor-pointer
               shrink-0
+              group
             "
           >
-
             <span
               className="
-                text-xl
-                font-bold
-                tracking-tight
+                text-lg
+                font-semibold
+                tracking-[-0.02em]
+                text-[#E8E6E1]
               "
             >
               ARAVINTH
-              <span className="gradient-text">
+              <span
+                className="
+                  text-[#7FA6C9]
+                  transition-colors
+                  group-hover:text-[#AFC7DF]
+                "
+              >
                 .
               </span>
             </span>
-
           </Link>
 
           {/* DESKTOP NAV */}
@@ -104,12 +103,10 @@ function Navbar() {
               hidden
               lg:flex
               items-center
-              gap-7
+              gap-1
             "
           >
-
             {navLinks.map((item) => (
-
               <li key={item.target}>
 
                 <Link
@@ -117,23 +114,29 @@ function Navbar() {
                   smooth
                   duration={600}
                   offset={-80}
-                  activeClass="text-white"
                   spy
+                  activeClass="!text-[#E8E6E1] !bg-white/[0.06]"
                   className="
+                    relative
+                    block
                     cursor-pointer
-                    text-sm
-                    text-gray-400
-                    hover:text-white
-                    transition-colors
+                    rounded-lg
+                    px-3
+                    py-2
+                    text-[13px]
+                    font-medium
+                    text-[#9A9DA3]
+                    hover:text-[#E8E6E1]
+                    hover:bg-white/[0.035]
+                    transition-all
+                    duration-200
                   "
                 >
                   {item.label}
                 </Link>
 
               </li>
-
             ))}
-
           </ul>
 
           {/* DESKTOP CTA */}
@@ -149,22 +152,31 @@ function Navbar() {
               items-center
               gap-2
               cursor-pointer
-              rounded-full
-              px-5
+              rounded-lg
+              border
+              border-[#4B78A8]/50
+              bg-[#4B78A8]/10
+              px-4
               py-2.5
-              text-sm
-              font-medium
-              bg-white
-              text-black
-              hover:bg-cyan-300
-              hover:scale-[1.02]
+              text-[13px]
+              font-semibold
+              text-[#DCE8F3]
+              hover:bg-[#4B78A8]/20
+              hover:border-[#7FA6C9]/60
               transition-all
+              duration-200
             "
           >
-
             Start a Project
 
-            <FaArrowRight className="text-xs" />
+            <FaArrowRight
+              className="
+                text-[10px]
+                transition-transform
+                duration-200
+                group-hover:translate-x-0.5
+              "
+            />
 
           </Link>
 
@@ -180,26 +192,27 @@ function Navbar() {
             aria-expanded={menuOpen}
             className="
               lg:hidden
-              w-10
-              h-10
-              rounded-xl
+              w-9
+              h-9
+              rounded-lg
               border
-              border-white/10
-              bg-white/5
+              border-white/[0.08]
+              bg-white/[0.025]
               flex
               items-center
               justify-center
-              text-white
+              text-[#D8D8D6]
+              hover:bg-white/[0.06]
+              hover:border-white/[0.14]
+              transition
             "
             onClick={() => setMenuOpen(!menuOpen)}
           >
-
             {menuOpen ? (
-              <FaTimes />
+              <FaTimes className="text-sm" />
             ) : (
-              <FaBars />
+              <FaBars className="text-sm" />
             )}
-
           </button>
 
         </div>
@@ -207,24 +220,23 @@ function Navbar() {
         {/* MOBILE MENU */}
 
         {menuOpen && (
-
           <div
             className="
               lg:hidden
               mt-2
-              rounded-2xl
+              rounded-xl
               border
-              border-white/10
-              bg-[#050816]/95
-              backdrop-blur-xl
-              p-6
+              border-white/[0.08]
+              bg-[#111419]/98
+              backdrop-blur-md
+              p-3
+              shadow-[0_12px_40px_rgba(0,0,0,0.25)]
             "
           >
 
-            <ul className="flex flex-col gap-5">
+            <ul className="flex flex-col gap-1">
 
               {navLinks.map((item) => (
-
                 <li key={item.target}>
 
                   <Link
@@ -234,15 +246,18 @@ function Navbar() {
                     offset={-80}
                     spy
                     onClick={closeMenu}
+                    activeClass="!text-[#E8E6E1] !bg-white/[0.06]"
                     className="
                       block
                       cursor-pointer
                       rounded-lg
-                      px-3
-                      py-2
-                      text-gray-300
-                      hover:bg-white/5
-                      hover:text-white
+                      px-4
+                      py-3
+                      text-sm
+                      font-medium
+                      text-[#9A9DA3]
+                      hover:bg-white/[0.04]
+                      hover:text-[#E8E6E1]
                       transition
                     "
                   >
@@ -250,7 +265,6 @@ function Navbar() {
                   </Link>
 
                 </li>
-
               ))}
 
               {/* MOBILE CTA */}
@@ -269,17 +283,19 @@ function Navbar() {
                     justify-center
                     gap-2
                     cursor-pointer
-                    rounded-full
+                    rounded-lg
+                    border
+                    border-[#4B78A8]/50
+                    bg-[#4B78A8]/10
                     px-5
                     py-3
-                    bg-white
-                    text-black
-                    font-medium
-                    hover:bg-cyan-300
+                    text-sm
+                    font-semibold
+                    text-[#DCE8F3]
+                    hover:bg-[#4B78A8]/20
                     transition
                   "
                 >
-
                   Start a Project
 
                   <FaArrowRight className="text-xs" />
@@ -291,7 +307,6 @@ function Navbar() {
             </ul>
 
           </div>
-
         )}
 
       </div>

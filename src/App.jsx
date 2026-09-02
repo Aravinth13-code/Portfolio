@@ -5,11 +5,9 @@ import BlogPost from "./pages/BlogPost"
 
 import Github from "./sections/Github/Github"
 import Loader from "./components/loader/Loader"
-import ParticlesBackground from "./components/ui/ParticlesBackground"
 import ScrollProgress from "./components/ui/ScrollProgress"
 import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
-import BackgroundGradient from "./components/ui/BackgroundGradient"
 
 import Hero from "./sections/Hero/Hero"
 import Services from "./sections/Services/Services"
@@ -37,7 +35,6 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <Routes>
 
         {/* HOME */}
@@ -45,34 +42,35 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="overflow-x-hidden">
+            <div className="relative min-h-screen overflow-x-hidden">
 
               <ScrollProgress />
 
-              <Navbar />
+              <div className="relative z-10">
 
-              <Hero />
+                <Navbar />
 
-<Services />
+                <Hero />
 
-<Projects />
+                <Services />
 
-<Freelance />
+                <Projects />
 
-<About />
+                <Freelance />
 
-<Skills />
+                <About />
 
-<Github />
+                <Skills />
 
-<Blog />
+                <Github />
 
-<Contact />
-              <Footer />
+                <Blog />
 
-              <BackgroundGradient />
+                <Contact />
 
-              <ParticlesBackground />
+                <Footer />
+
+              </div>
 
             </div>
           }
@@ -86,7 +84,6 @@ function App() {
         />
 
       </Routes>
-
     </BrowserRouter>
   )
 }

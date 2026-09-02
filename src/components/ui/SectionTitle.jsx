@@ -2,11 +2,35 @@ function SectionTitle({ title, subtitle }) {
   return (
     <div className="mb-16">
 
-      <h2 className="text-4xl md:text-5xl font-bold">
+      <h2
+        className="
+          text-4xl
+          md:text-5xl
+          font-bold
+          text-[var(--text)]
+          tracking-tight
+        "
+      >
         {title}
       </h2>
 
-      <p className="text-gray-400 mt-4 max-w-2xl">
+      <div
+        className="
+          mt-5
+          w-12
+          h-px
+          bg-[var(--secondary)]
+        "
+      />
+
+      <p
+        className="
+          mt-5
+          max-w-2xl
+          text-[var(--muted)]
+          leading-relaxed
+        "
+      >
         {subtitle}
       </p>
 

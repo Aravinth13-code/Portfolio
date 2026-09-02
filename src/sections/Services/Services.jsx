@@ -29,7 +29,7 @@ function Services() {
             mx-auto
             mt-6
             text-center
-            text-gray-400
+            text-[var(--muted)]
             leading-relaxed
           "
         >
@@ -45,7 +45,7 @@ function Services() {
             grid
             grid-cols-1
             md:grid-cols-2
-            gap-6
+            gap-5
             mt-16
           "
         >
@@ -66,16 +66,19 @@ function Services() {
                   group
                   relative
                   overflow-hidden
-                  rounded-3xl
-                  border border-white/10
-                  bg-white/[0.03]
+                  rounded-2xl
+                  border
+                  border-[var(--border)]
+                  bg-[var(--surface)]
                   p-8
                   transition-all
                   duration-300
-                  hover:border-purple-500/40
-                  hover:bg-white/[0.05]
+                  hover:border-[#4B78A8]/50
+                  hover:bg-[var(--surface-light)]
+                  hover:-translate-y-1
                 "
               >
+
                 {/* TOP ROW */}
 
                 <div className="flex items-start justify-between">
@@ -87,20 +90,29 @@ function Services() {
                       justify-center
                       w-12
                       h-12
-                      rounded-xl
-                      bg-purple-500/10
-                      border border-purple-500/20
+                      rounded-lg
+                      bg-[#4B78A8]/[0.08]
+                      border
+                      border-[#4B78A8]/20
+                      transition-colors
+                      duration-300
+                      group-hover:bg-[#4B78A8]/[0.14]
                     "
                   >
-                    <Icon className="text-purple-400 text-xl" />
+                    <Icon
+                      className="
+                        text-[#7FA6C9]
+                        text-xl
+                      "
+                    />
                   </div>
 
                   <span
                     className="
                       text-sm
-                      font-medium
+                      font-mono
                       text-gray-600
-                      group-hover:text-purple-400
+                      group-hover:text-[#7FA6C9]
                       transition-colors
                     "
                   >
@@ -116,7 +128,7 @@ function Services() {
                     mt-8
                     text-2xl
                     font-semibold
-                    text-white
+                    text-[var(--text)]
                   "
                 >
                   {service.title}
@@ -125,7 +137,7 @@ function Services() {
                 <p
                   className="
                     mt-4
-                    text-gray-400
+                    text-[var(--muted)]
                     leading-relaxed
                   "
                 >
@@ -135,7 +147,9 @@ function Services() {
                 {/* FEATURES */}
 
                 <ul className="mt-6 space-y-3">
+
                   {service.features.map((feature) => (
+
                     <li
                       key={feature}
                       className="
@@ -146,18 +160,23 @@ function Services() {
                         text-gray-300
                       "
                     >
+
                       <span
                         className="
                           w-1.5
                           h-1.5
                           rounded-full
-                          bg-cyan-400
+                          bg-[#7FA6C9]
+                          shrink-0
                         "
                       />
 
                       {feature}
+
                     </li>
+
                   ))}
+
                 </ul>
 
                 {/* HOVER ARROW */}
@@ -170,7 +189,7 @@ function Services() {
                     gap-2
                     text-sm
                     text-gray-500
-                    group-hover:text-white
+                    group-hover:text-[#E8E6E1]
                     transition-colors
                   "
                 >
@@ -183,6 +202,7 @@ function Services() {
                       group-hover:translate-x-1
                     "
                   />
+
                 </div>
 
               </motion.article>
@@ -202,7 +222,8 @@ function Services() {
             text-center
           "
         >
-          <p className="text-gray-400">
+
+          <p className="text-[var(--muted)]">
             Have something different in mind?
           </p>
 
@@ -213,15 +234,18 @@ function Services() {
               items-center
               gap-2
               mt-3
-              text-white
+              text-[var(--text)]
               font-medium
-              hover:text-cyan-400
+              hover:text-[#7FA6C9]
               transition-colors
             "
           >
             Let's discuss your project
+
             <FaArrowRight className="text-xs" />
+
           </a>
+
         </motion.div>
 
       </div>

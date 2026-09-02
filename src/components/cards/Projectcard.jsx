@@ -1,215 +1,300 @@
-import Tilt from "react-parallax-tilt"
-import { FaArrowRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import { motion } from "framer-motion"
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+} from "react-icons/fa"
 
 function ProjectCard({ project }) {
   return (
-    <Tilt
-      tiltMaxAngleX={5}
-      tiltMaxAngleY={5}
-      perspective={1200}
-      transitionSpeed={1000}
-      scale={1.01}
-      className="h-full"
+    <motion.article
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="
+        group
+        relative
+        overflow-hidden
+        rounded-2xl
+        border
+        border-white/[0.08]
+        bg-[#15181D]
+        transition-all
+        duration-300
+        hover:border-[#4B78A8]/40
+      "
     >
-      <article
+
+      {/* TOP VISUAL AREA */}
+
+      <div
         className="
-          group
           relative
-          h-full
+          h-52
           overflow-hidden
-          rounded-3xl
-          border border-white/10
-          bg-white/[0.03]
-          transition-all
-          duration-300
-          hover:border-purple-500/40
-          hover:bg-white/[0.05]
+          bg-[#0E1014]
+          border-b
+          border-white/[0.08]
         "
       >
-        {/* PROJECT VISUAL */}
+
+        {/* ABSTRACT PROJECT PREVIEW */}
 
         <div
           className="
-            relative
-            h-56
-            overflow-hidden
-            border-b
+            absolute
+            inset-0
+            opacity-40
+          "
+          style={{
+            background: `
+              linear-gradient(
+                135deg,
+                rgba(75,120,168,0.18),
+                transparent 55%
+              )
+            `,
+          }}
+        />
+
+        <div
+          className="
+            absolute
+            -right-20
+            -top-20
+            w-64
+            h-64
+            rounded-full
+            border
+            border-[#7FA6C9]/10
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-10
+            -top-10
+            w-44
+            h-44
+            rounded-full
+            border
+            border-[#7FA6C9]/10
+          "
+        />
+
+        {/* PROJECT CATEGORY */}
+
+        <div
+          className="
+            absolute
+            top-6
+            left-6
+            px-3
+            py-1.5
+            rounded-md
+            border
             border-white/10
-            bg-gradient-to-br
-            from-purple-500/10
-            via-transparent
-            to-cyan-500/10
+            bg-black/20
+            backdrop-blur-sm
+            text-xs
+            text-[#9A9DA3]
           "
         >
-          {/* Placeholder until real project screenshot is added */}
-
-          <div
-            className="
-              absolute
-              inset-0
-              flex
-              items-center
-              justify-center
-              text-gray-600
-              text-sm
-            "
-          >
-            Project Preview
-          </div>
-
-          {/* Decorative glow */}
-
-          <div
-            className="
-              absolute
-              -top-20
-              -right-20
-              w-40
-              h-40
-              rounded-full
-              bg-purple-500/20
-              blur-3xl
-              transition-transform
-              duration-500
-              group-hover:scale-150
-            "
-          />
+          {project.category}
         </div>
 
-        {/* CONTENT */}
+        {/* PROJECT NUMBER */}
 
-        <div className="p-7">
+        <span
+          className="
+            absolute
+            bottom-5
+            right-6
+            text-5xl
+            font-bold
+            text-white/[0.04]
+            select-none
+          "
+        >
+          {String(project.title.length).padStart(2, "0")}
+        </span>
 
-          {/* CATEGORY */}
+      </div>
+
+      {/* CONTENT */}
+
+      <div className="p-7">
+
+        {/* TITLE */}
+
+        <h3
+          className="
+            text-2xl
+            font-semibold
+            text-[#E8E6E1]
+            group-hover:text-white
+            transition-colors
+          "
+        >
+          {project.title}
+        </h3>
+
+        {/* DESCRIPTION */}
+
+        <p
+          className="
+            mt-4
+            text-sm
+            leading-7
+            text-[#9A9DA3]
+          "
+        >
+          {project.description}
+        </p>
+
+        {/* TECHNOLOGY */}
+
+        <div className="flex flex-wrap gap-2 mt-6">
+
+          {project.tech.map((technology) => (
+            <span
+              key={technology}
+              className="
+                px-3
+                py-1.5
+                rounded-md
+                bg-white/[0.025]
+                border
+                border-white/[0.08]
+                text-xs
+                text-[#B7BCC4]
+              "
+            >
+              {technology}
+            </span>
+          ))}
+
+        </div>
+
+        {/* FEATURES */}
+
+        <div className="mt-7">
 
           <p
             className="
               text-xs
               uppercase
-              tracking-[0.2em]
-              text-cyan-400
-              font-medium
+              tracking-[0.18em]
+              text-[#7FA6C9]
+              mb-3
             "
           >
-            {project.category}
+            Key capabilities
           </p>
 
-          {/* TITLE */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
-          <h3
-            className="
-              mt-3
-              text-2xl
-              font-bold
-              text-white
-            "
-          >
-            {project.title}
-          </h3>
-
-          {/* DESCRIPTION */}
-
-          <p
-            className="
-              mt-4
-              text-gray-400
-              leading-7
-            "
-          >
-            {project.description}
-          </p>
-
-          {/* TECHNOLOGIES */}
-
-          <div className="flex flex-wrap gap-2 mt-6">
-
-            {project.tech.map((item) => (
-              <span
-                key={item}
+            {project.features.slice(0, 4).map((feature) => (
+              <div
+                key={feature}
                 className="
-                  rounded-full
-                  border border-white/10
-                  bg-white/5
-                  px-3
-                  py-1.5
-                  text-xs
-                  text-gray-300
+                  flex
+                  items-center
+                  gap-2
+                  text-sm
+                  text-[#B7BCC4]
                 "
               >
-                {item}
-              </span>
+                <span
+                  className="
+                    w-1.5
+                    h-1.5
+                    rounded-full
+                    bg-[#7FA6C9]
+                  "
+                />
+
+                {feature}
+              </div>
             ))}
 
           </div>
 
-          {/* LINKS */}
+        </div>
 
-          <div
+        {/* FOOTER */}
+
+        <div
+          className="
+            mt-7
+            pt-5
+            border-t
+            border-white/[0.08]
+            flex
+            items-center
+            justify-between
+          "
+        >
+
+          {/* ROLE */}
+
+          <span
             className="
-              flex
-              items-center
-              justify-between
-              mt-8
-              pt-6
-              border-t
-              border-white/10
+              text-xs
+              text-[#777C84]
             "
           >
+            {project.role}
+          </span>
+
+          {/* LINKS */}
+
+          <div className="flex items-center gap-4">
+
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="
+                flex
+                items-center
+                gap-2
+                text-sm
+                text-[#9A9DA3]
+                hover:text-white
+                transition
+              "
+            >
+              <FaGithub />
+              Code
+            </a>
+
             <a
               href={project.live}
               target="_blank"
               rel="noreferrer"
               className="
-                inline-flex
+                flex
                 items-center
                 gap-2
                 text-sm
-                font-medium
-                text-white
-                hover:text-cyan-400
-                transition-colors
+                text-[#9A9DA3]
+                hover:text-[#7FA6C9]
+                transition
               "
             >
-              View Project
-              <FaArrowRight className="text-xs" />
+              <FaExternalLinkAlt className="text-xs" />
+              Demo
             </a>
 
-            <div className="flex items-center gap-4">
-
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.title} GitHub repository`}
-                className="
-                  text-gray-500
-                  hover:text-white
-                  transition-colors
-                "
-              >
-                <FaGithub />
-              </a>
-
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.title} live demo`}
-                className="
-                  text-gray-500
-                  hover:text-white
-                  transition-colors
-                "
-              >
-                <FaExternalLinkAlt className="text-sm" />
-              </a>
-
-            </div>
           </div>
 
         </div>
-      </article>
-    </Tilt>
+
+      </div>
+
+    </motion.article>
   )
 }
 

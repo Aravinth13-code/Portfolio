@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: #0E1014;
+  --surface: #15181D;
+  --surface-light: #1C2128;
+
+  --primary: #4B78A8;
+  --secondary: #7FA6C9;
+
+  --text: #E8E6E1;
+  --muted: #9A9DA3;
+
+  --border: rgba(232, 230, 225, 0.10);
+}
 
 html {
   scroll-behavior: smooth;
@@ -8,17 +24,52 @@ html {
 
 body {
   margin: 0;
-  background: #020617;
-  color: white;
-  font-family: sans-serif;
+  background: var(--background);
+  color: var(--text);
+
+  font-family: "DM Sans", sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.font-mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .section-padding {
   padding: 120px 32px;
 }
 
-.gradient-text {
-  background: linear-gradient(to right, #915EFF, #00F5FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+::selection {
+  background: rgba(75, 120, 168, 0.3);
+  color: #ffffff;
 }
