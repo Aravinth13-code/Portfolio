@@ -117,7 +117,7 @@ function Contact() {
               <div className="flex gap-4">
 
                 <a
-                  href="#"
+                  href="https://github.com/Aravinth13-code"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
